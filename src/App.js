@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import QuoteMachine from './componets/QuoteMachine';
 import './App.css';
 import 'typeface-roboto';
+import quotes from './quotes.json';
 
 const styles = {
   container: {
@@ -263,16 +264,17 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch(
-      'https://gist.githubusercontent.com/natebass/b0a548425a73bdf8ea5c618149fe1fce/raw/f4231cd5961f026264bb6bb3a6c41671b044f1f4/quotes.json'
-    )
-      .then(data => data.json())
-      .then(quotes =>
-        this.setState({ quotes }, () => {
-          this.assignNewQuoteIndex();
-          this.generateBgColor();
-        })
-      );
+    // fetch(
+    //   'https://gist.githubusercontent.com/natebass/b0a548425a73bdf8ea5c618149fe1fce/raw/f4231cd5961f026264bb6bb3a6c41671b044f1f4/quotes.json'
+    // )
+    //   .then(data => data.json())
+    //   .then(quotes =>
+    this.setState({ quotes }, () => {
+      this.assignNewQuoteIndex();
+      this.generateBgColor();
+    });
+    // );
+    console.log(quotes);
   }
 
   get selectedQuote() {
